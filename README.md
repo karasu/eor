@@ -1,1 +1,3 @@
 # eor
+
+Test django app
