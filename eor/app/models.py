@@ -1,7 +1,7 @@
 """ Models module """
 
 from django.db import models
-
+from django.utils.timezone import now
 from django.contrib.auth.models import User
 
 class Question(models.Model):
@@ -30,13 +30,17 @@ class Team(models.Model):
     """ Store team info """
     name = models.CharField(max_length=200)
 
+class Competition(models.Model):
+    """ Store competition info """
+    name = models.CharField(max_length=200)
+
 class Match(models.Model):
     """ Generic match info """
-    competition = models.CharField(max_length=200)
-    jornada = models.IntegerField()
-    date = models.DateField()
+    competition = models.ForeignKey(Competition, on_delete=models.CASCADE)
     home = models.ForeignKey(Team, on_delete=models.CASCADE)
     visitant = models.ForeignKey(Team, on_delete=models.CASCADE)
+    date = models.DateField()
+    jornada = models.IntegerField()
 
 class Set(models.Model):
     """ Stores ended set info """
@@ -46,24 +50,25 @@ class Set(models.Model):
     visitor_points = models.IntegerField()
 
 class MatchSetsFactors(models.Model):
-    """ Store factors for each match set """
-    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    """ Store factors for each set """
     set = models.ForeignKey(Set, on_delete=models.CASCADE)
     factors = models.ForeignKey(Factors, on_delete=models.CASCADE)
 
 class ExchangeInfo(models.Model):
-    """ Info to store in each exchange of points """
-    # instant = match row entry
-    instant = models.IntegerField()
-    match = models.ForeignKey(Match, on_delete=models.CASCADE)
+    """ Info to store in each exchange of points (each row)"""
     team = models.ForeignKey(Match, on_delete=models.CASCADE)
     is_change = models.BooleanField()
     is_time = models.BooleanField()
     points = models.IntegerField()
 
-class MatchExchange(models.Model):
+class Exchange(models.Model):
     """ Match row """
-    match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    instant = models.IntegerField()
+    time = models.DateTimeField(default=now)
+    set = models.ForeignKey(Set, on_delete=models.CASCADE)
     home_info = models.ForeignKey(ExchangeInfo, on_delete=models.CASCADE)
     visitor_info = models.ForeignKey(ExchangeInfo, on_delete=models.CASCADE)
+
+class PlayerFactors(models.Model):
+    """ Player factors in a point exchange """
+    exchange = models.ForeignKey(Exchange, on_delete=models.CASCADE)
+    factors = models.ForeignKey(Factors, on_delete=models.CASCADE)
