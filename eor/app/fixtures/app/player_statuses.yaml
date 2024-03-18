@@ -1,0 +1,33 @@
+- model: app.PlayerStatus
+  pk: 1
+  fields:
+    player: 1
+    motivated: True
+    activated: False
+    concentrated: False
+    confident: False
+    competitive: False
+    demorged: False
+    cohesioned: False
+- model: app.PlayerStatus
+  pk: 2
+  fields:
+    player: 1
+    motivated: True
+    activated: False
+    concentrated: False
+    confident: False
+    competitive: False
+    demorged: False
+    cohesioned: False
+- model: app.PlayerStatus
+  pk: 3
+  fields:
+    player: 1
+    motivated: True
+    activated: False
+    concentrated: False
+    confident: False
+    competitive: False
+    demorged: False
+    cohesioned: False

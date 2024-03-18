@@ -1,0 +1,8 @@
+- model: app.Team
+  pk: 1
+  fields:
+    name: Equip1
+- model: app.Team
+  pk: 2
+  fields:
+    name: Equip2

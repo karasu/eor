@@ -1,0 +1,5 @@
+- model: app.ExchangePlayerStatus
+  pk: 1
+  fields:
+    exchange: 1
+    factors: 1

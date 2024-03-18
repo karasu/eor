@@ -1,0 +1,9 @@
+- model: app.Match
+  pk: 1
+  fields:
+    competition: 1
+    home: 1
+    visitor: 2
+    date: 2/3/2022
+    jornada: 1
+  

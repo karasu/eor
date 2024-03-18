@@ -1,0 +1,21 @@
+- model: app.Set
+  pk: 1
+  fields:
+    match: 1
+    num_set: 1
+    home_points: 21
+    visitor_points: 15
+- model: app.Set
+  pk: 2
+  fields:
+    match: 1
+    num_set: 2
+    home_points: 21
+    visitor_points: 14
+- model: app.Set
+  pk: 3
+  fields:
+    match: 1
+    num_set: 3
+    home_points: 24
+    visitor_points: 22

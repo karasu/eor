@@ -1,0 +1,6 @@
+- model: app.Exchange
+  pk: 1
+  fields:
+    set: 1
+    home_info: 1
+    visitor_info: 2
